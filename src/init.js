@@ -28,10 +28,15 @@ $(document).ready(function() {
       Math.random() * 1500 + 500
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
 
   $('.lineUpButton').on('click', function(event) {
-    
+    // window.dancers.forEach(function(dancer) {
+    //   dancer.left = 500;
+    //   dancer.top = 500;
+    //   dancer.$node.animate({left: 500, top: 500}, 1000);
+    // });
   });
 });
 

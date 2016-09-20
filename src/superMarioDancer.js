@@ -14,11 +14,11 @@ makeSuperMarioDancer.prototype.step = function() {
   this.jump = !this.jump;
   var offset = 100;
   // var positionString = this.$node.css('top');
-  // var position = parseFloat(positionString.slice(0, positionString.length - 2));
-  // position = this.jump ? position - offset : position + offset;
+  var top = parseFloat(this.$node.css('top'));
+  top = this.jump ? top - offset : top + offset;
   // var interval = this.timeBetweenSteps - (!this.jump ? this.timeBetweenSteps / 3 : 0);
   // this.$node.animate({top: position}, interval);
-  var currTop = this.jump ? this.top - offset : this.top;
+  // var currTop = this.jump ? top - offset : top;
   var interval = this.timeBetweenSteps - (!this.jump ? this.timeBetweenSteps / 3 : 0);
-  this.$node.animate({top: currTop}, interval, this.step.bind(this));
+  this.$node.animate({top: top}, interval, this.step.bind(this));
 };
