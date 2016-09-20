@@ -27,7 +27,14 @@ body, a:link, a:visited, a:active{
 }
 .superMario{
   border: none;
-  background: url("Images/Mario1.jpeg");
+  background: url("Images/Mario2.png");
+  background-size: cover;
+  width: 100px; /* Width of new image */
+  height: 125px; /* Height of new image */
+}
+.somersault{
+  border: none;
+  background: url("Images/Charlie-kick1.gif");
   background-size: cover;
   width: 100px; /* Width of new image */
   height: 125px; /* Height of new image */
