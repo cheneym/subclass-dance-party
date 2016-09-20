@@ -20,10 +20,15 @@ makeSomersaultDancer.prototype.step = function() {
   var newLeft = Math.floor(xCenter + (this.r * Math.sin(this.t)));
   var newTop = Math.floor(yCenter + (this.r * Math.cos(this.t)));
 
-  this.$node.animate({top: newTop, left: newLeft}, 20, this.step.bind(this));
+  this.$node.animate({top: newTop, left: newLeft}, 20 + 10 * Math.random(), this.step.bind(this));
 };
 
 makeSomersaultDancer.prototype.startDancing = function() {
   this.t = 0;
   makeDancer.prototype.startDancing.call(this);
 };
+
+makeSomersaultDancer.prototype.continueDancing = function() {
+  makeDancer.prototype.continueDancing.call(this);
+};
+

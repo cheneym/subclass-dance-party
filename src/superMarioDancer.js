@@ -30,3 +30,11 @@ makeSuperMarioDancer.prototype.startDancing = function() {
   this.jump = false;
   makeDancer.prototype.startDancing.call(this);
 };
+
+makeSuperMarioDancer.prototype.continueDancing = function() {
+  makeDancer.prototype.continueDancing.call(this);
+};
+
+makeSuperMarioDancer.prototype.checkDistance = function(top, left) {
+  // body...
+};

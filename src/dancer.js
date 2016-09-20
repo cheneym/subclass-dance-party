@@ -45,3 +45,8 @@ makeDancer.prototype.startDancing = function() {
   this.setPosition(y, x);
   this.step();
 };
+
+makeDancer.prototype.continueDancing = function() {
+  this.dance = true;
+  this.step();
+};

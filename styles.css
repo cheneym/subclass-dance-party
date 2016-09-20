@@ -40,3 +40,11 @@ body, a:link, a:visited, a:active{
   width: 100px; /* Width of new image */
   height: 125px; /* Height of new image */
 }
+
+.fighter{ 
+  border: none;
+  background: url("Images/charlie-big-super2.gif");
+  background-size: cover;
+  width: 220px; /* Width of new image */
+  height: 125px; /* Height of new image */  
+}

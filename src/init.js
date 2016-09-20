@@ -57,21 +57,59 @@ $(document).ready(function() {
       if (dancer.constructor === makeSuperMarioDancer) {
         obj.top = marioSpot.top + '';
         obj.left = marioSpot.left + '';
-        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        dancer.$node.animate(obj, time);
         marioSpot.left += 100;
       } else if (dancer.constructor === makeSomersaultDancer) {
         obj.top = somersaultSpot.top + '';
         obj.left = somersaultSpot.left + '';
-        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        dancer.$node.animate(obj, time);
         somersaultSpot.left += 100;
       } else {
         obj.top = blinkySpot.top + '';
         obj.left = blinkySpot.left + '';
-        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        dancer.$node.animate(obj, time);
         blinkySpot.left += 100;
       }
 
     });
   });
+
+  $('.startDanceButton').on('click', function(event) {
+    window.dancers.forEach(function(dancer) {
+      if (!dancer.dance) {
+        dancer.startDancing();
+      }
+    });
+  });
+
+  $('body').on('mouseover', '.somersault', function(event) {
+    // console.log(this);
+    // this.classList.remove('somersault');
+    // this.classList.add('fighter');
+    // console.log('stop');
+    var node = this;
+    window.dancers.forEach(function(dancer) {
+      if (dancer.$node.get(0) === node) {
+        dancer.stopDancing();
+      }
+    });
+  });
+
+  $('body').on('mouseleave', '.somersault', function(event) {
+    var node = this;
+    window.dancers.forEach(function(dancer) {
+      if (dancer.$node.get(0) === node) {
+        dancer.continueDancing();
+      }
+    });
+  });
+
+  $('groupDance').on('click', function(event) {
+    console.log('Group Dance');
+  });
+
 });
 
