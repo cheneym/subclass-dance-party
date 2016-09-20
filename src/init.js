@@ -58,7 +58,7 @@ $(document).ready(function() {
         obj.top = marioSpot.top + '';
         obj.left = marioSpot.left + '';
         // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
-        dancer.$node.animate(obj, time);
+        dancer.$node.animate(obj, time, dancer.setPosition.bind(dancer, obj.top, obj.left));
         marioSpot.left += 100;
       } else if (dancer.constructor === makeSomersaultDancer) {
         obj.top = somersaultSpot.top + '';
@@ -70,7 +70,7 @@ $(document).ready(function() {
         obj.top = blinkySpot.top + '';
         obj.left = blinkySpot.left + '';
         // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
-        dancer.$node.animate(obj, time);
+        dancer.$node.animate(obj, time, dancer.setPosition.bind(dancer, obj.top, obj.left));
         blinkySpot.left += 100;
       }
 
@@ -86,10 +86,6 @@ $(document).ready(function() {
   });
 
   $('body').on('mouseover', '.somersault', function(event) {
-    // console.log(this);
-    // this.classList.remove('somersault');
-    // this.classList.add('fighter');
-    // console.log('stop');
     var node = this;
     window.dancers.forEach(function(dancer) {
       if (dancer.$node.get(0) === node) {
@@ -107,8 +103,14 @@ $(document).ready(function() {
     });
   });
 
-  $('groupDance').on('click', function(event) {
-    console.log('Group Dance');
+  $('.groupDance').on('click', function(event) {
+    for (var i = 0; i < dancers.length; i++) {
+      if (dancers[i].constructor === makeSuperMarioDancer) {
+        dancers[i].groupDance(100, 1000, 150);
+        console.log('Found 1 mario');
+        break;
+      }
+    }
   });
 
 });
