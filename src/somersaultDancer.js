@@ -22,3 +22,8 @@ makeSomersaultDancer.prototype.step = function() {
 
   this.$node.animate({top: newTop, left: newLeft}, 20, this.step.bind(this));
 };
+
+makeSomersaultDancer.prototype.startDancing = function() {
+  this.t = 0;
+  makeDancer.prototype.startDancing.call(this);
+};

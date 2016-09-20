@@ -39,15 +39,15 @@ $(document).ready(function() {
     // });
     var marioSpot = {
       top: $('body').height() / 2,
-      left: $('body').width() * 2 / 6
+      left: $('body').width() * 1 / 6
     };
     var somersaultSpot = {
       top: $('body').height() / 4,
-      left: $('body').width() * 2 / 6
+      left: $('body').width() * 1 / 6
     };
     var blinkySpot = {
       top: $('body').height() * 3 / 4,
-      left: $('body').width() * 2 / 6
+      left: $('body').width() * 1 / 6
     };
     
     window.dancers.forEach(function(dancer) {
@@ -65,8 +65,8 @@ $(document).ready(function() {
         dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
         somersaultSpot.left += 100;
       } else {
-        obj.top = somersaultSpot.top + '';
-        obj.left = somersaultSpot.left + '';
+        obj.top = blinkySpot.top + '';
+        obj.left = blinkySpot.left + '';
         dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
         blinkySpot.left += 100;
       }
