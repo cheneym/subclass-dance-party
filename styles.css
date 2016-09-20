@@ -25,3 +25,10 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.superMario{
+  border: none;
+  background: url("Images/Mario1.jpeg");
+  background-size: cover;
+  width: 100px; /* Width of new image */
+  height: 125px; /* Height of new image */
+}
