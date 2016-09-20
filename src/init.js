@@ -51,29 +51,17 @@ $(document).ready(function() {
     };
     
     window.dancers.forEach(function(dancer) {
-      dancer.stopDancing();
-      var obj = {};
-      var time = 2000;
+      var time = 1000;
       if (dancer.constructor === makeSuperMarioDancer) {
-        obj.top = marioSpot.top + '';
-        obj.left = marioSpot.left + '';
-        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
-        dancer.$node.animate(obj, time, dancer.setPosition.bind(dancer, obj.top, obj.left));
+        dancer.lineUp(marioSpot.top, marioSpot.left, time);
         marioSpot.left += 100;
       } else if (dancer.constructor === makeSomersaultDancer) {
-        obj.top = somersaultSpot.top + '';
-        obj.left = somersaultSpot.left + '';
-        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
-        dancer.$node.animate(obj, time);
+        dancer.lineUp(somersaultSpot.top, somersaultSpot.left, time);
         somersaultSpot.left += 100;
       } else {
-        obj.top = blinkySpot.top + '';
-        obj.left = blinkySpot.left + '';
-        // dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
-        dancer.$node.animate(obj, time, dancer.setPosition.bind(dancer, obj.top, obj.left));
+        dancer.lineUp(blinkySpot.top, blinkySpot.left, time);
         blinkySpot.left += 100;
       }
-
     });
   });
 

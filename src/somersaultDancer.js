@@ -1,30 +1,47 @@
 var makeSomersaultDancer = function(top, left, timeBetweenSteps) {
-  // this.oldStep = makeDancer.prototype.step;
   makeDancer.call(this, top, left, timeBetweenSteps);
+  
+  //Gif assignment
   this.$node.addClass('somersault');
+
+  //Circle Properties
   this.t = 0;
-  this.r = Math.random() * 100 + 50;
+  this.setRadius(Math.random() * 100 + 50);
+
+  if (this.constructor === makeSomersaultDancer) {
+    this.step(); 
+  }
 };
 
 makeSomersaultDancer.prototype = Object.create(makeDancer.prototype);
 makeSomersaultDancer.prototype.constructor = makeSomersaultDancer;
-makeSomersaultDancer.prototype.step = function() {
-  if (!this.dance) {
+
+makeSomersaultDancer.prototype.step = function(time) {
+  if (!this.isDancing()) {
     return;
   }
-  // this.oldStep();
+
+  //Circle Position Math
   var xCenter = this.left;
   var yCenter = this.top - this.r;
   this.t += 0.1;
-  
   var newLeft = Math.floor(xCenter + (this.r * Math.sin(this.t)));
   var newTop = Math.floor(yCenter + (this.r * Math.cos(this.t)));
 
-  this.$node.animate({top: newTop, left: newLeft}, 20 + 10 * Math.random(), this.step.bind(this));
+  //Time interval
+  var timeInterval = time || 20 + 10 * Math.random();
+
+  this.$node.animate({top: newTop, left: newLeft}, 
+                      timeInterval, 
+                      this.step.bind(this, timeInterval));
+};
+
+makeSomersaultDancer.prototype.setRadius = function(radius) {
+  this.r = radius;
 };
 
 makeSomersaultDancer.prototype.startDancing = function() {
-  this.t = 0;
+  this.resetProperties();
   makeDancer.prototype.startDancing.call(this);
 };
 
@@ -32,3 +49,6 @@ makeSomersaultDancer.prototype.continueDancing = function() {
   makeDancer.prototype.continueDancing.call(this);
 };
 
+makeSomersaultDancer.prototype.resetProperties = function() {
+  this.t = 0;
+};

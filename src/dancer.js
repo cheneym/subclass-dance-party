@@ -1,37 +1,45 @@
 // Creates and returns a new dancer object that can step
 var makeDancer = function(top, left, timeBetweenSteps) {
-  // use jQuery to create an HTML <span> tag
+
   this.$node = $('<span class="dancer"></span>');
+  
+  //Timing properties
   this.timeBetweenSteps = timeBetweenSteps;
-  this.dance = true;
+
+  //Positional properties
   this.top = top;
   this.left = left;
   this.setPosition(top, left);
-  this.step();
-  // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
-  
-};
 
-makeDancer.prototype.step = function(time) {
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
-  var interval = time || this.timeBetweenSteps;
-  if (this.dance) {
-    setTimeout(this.step.bind(this), interval);
+  //Booleans
+  this.dance = true;
+
+  //Start dancing
+  if (this.constructor === makeDancer) {
+    this.step(); 
   }
 };
 
+makeDancer.prototype.step = function(time) {
+  if (!this.dance) {
+    return;
+  }
+
+  //Time delay between dancing
+  var interval = time || this.timeBetweenSteps;
+  setTimeout(this.step.bind(this), interval);
+};
+
 makeDancer.prototype.setPosition = function(top, left) {
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
-  //
+  //Hard set position
   this.top = top;
   this.left = left;
+
   var styleSettings = {
     top: this.top,
     left: this.left
   };
+  //Css position
   this.$node.css(styleSettings);
 };
 
@@ -51,3 +59,30 @@ makeDancer.prototype.continueDancing = function() {
   this.dance = true;
   this.step();
 };
+
+makeDancer.prototype.lineUp = function(top, left, time) {
+  time = time || 1;
+  this.stopDancing();
+  var cssPosition = {
+    top: '' + top,
+    left: '' + left
+  };
+
+  this.$node.animate(cssPosition, time, this.setPosition.bind(this, top, left));
+};
+
+makeDancer.prototype.getPosition = function() {
+  var top = parseFloat(this.$node.css('top'));
+  var left = parseFloat(this.$node.css('left'));
+
+  return {top: top, left: left};
+};
+
+makeDancer.prototype.isDancing = function() {
+  return this.dance;
+};
+
+
+
+
+
