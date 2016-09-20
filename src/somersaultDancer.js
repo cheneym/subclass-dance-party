@@ -9,6 +9,9 @@ var makeSomersaultDancer = function(top, left, timeBetweenSteps) {
 makeSomersaultDancer.prototype = Object.create(makeDancer.prototype);
 makeSomersaultDancer.prototype.constructor = makeSomersaultDancer;
 makeSomersaultDancer.prototype.step = function() {
+  if (!this.dance) {
+    return;
+  }
   // this.oldStep();
   var xCenter = this.left;
   var yCenter = this.top - this.r;

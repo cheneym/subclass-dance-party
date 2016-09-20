@@ -11,6 +11,9 @@ makeSuperMarioDancer.prototype = Object.create(makeDancer.prototype);
 makeSuperMarioDancer.prototype.constructor = makeSuperMarioDancer;
 
 makeSuperMarioDancer.prototype.step = function() {
+  if (!this.dance) {
+    return;
+  }
   this.jump = !this.jump;
   var offset = 100;
   // var positionString = this.$node.css('top');
@@ -21,4 +24,9 @@ makeSuperMarioDancer.prototype.step = function() {
   // var currTop = this.jump ? top - offset : top;
   var interval = this.timeBetweenSteps - (!this.jump ? this.timeBetweenSteps / 3 : 0);
   this.$node.animate({top: top}, interval, this.step.bind(this));
+};
+
+makeSuperMarioDancer.prototype.startDancing = function() {
+  this.jump = false;
+  makeDancer.prototype.startDancing.call(this);
 };

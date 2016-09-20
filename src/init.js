@@ -37,6 +37,41 @@ $(document).ready(function() {
     //   dancer.top = 500;
     //   dancer.$node.animate({left: 500, top: 500}, 1000);
     // });
+    var marioSpot = {
+      top: $('body').height() / 2,
+      left: $('body').width() * 2 / 6
+    };
+    var somersaultSpot = {
+      top: $('body').height() / 4,
+      left: $('body').width() * 2 / 6
+    };
+    var blinkySpot = {
+      top: $('body').height() * 3 / 4,
+      left: $('body').width() * 2 / 6
+    };
+    
+    window.dancers.forEach(function(dancer) {
+      dancer.stopDancing();
+      var obj = {};
+      var time = 2000;
+      if (dancer.constructor === makeSuperMarioDancer) {
+        obj.top = marioSpot.top + '';
+        obj.left = marioSpot.left + '';
+        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        marioSpot.left += 100;
+      } else if (dancer.constructor === makeSomersaultDancer) {
+        obj.top = somersaultSpot.top + '';
+        obj.left = somersaultSpot.left + '';
+        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        somersaultSpot.left += 100;
+      } else {
+        obj.top = somersaultSpot.top + '';
+        obj.left = somersaultSpot.left + '';
+        dancer.$node.animate(obj, time, dancer.startDancing.bind(dancer));
+        blinkySpot.left += 100;
+      }
+
+    });
   });
 });
 
