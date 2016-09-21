@@ -32,11 +32,7 @@ $(document).ready(function() {
   });
 
   $('.lineUpButton').on('click', function(event) {
-    // window.dancers.forEach(function(dancer) {
-    //   dancer.left = 500;
-    //   dancer.top = 500;
-    //   dancer.$node.animate({left: 500, top: 500}, 1000);
-    // });
+  
     var marioSpot = {
       top: $('body').height() / 2,
       left: $('body').width() * 1 / 12
@@ -111,7 +107,12 @@ $(document).ready(function() {
     for (var i = 0; i < dancers.length; i++) {
       if (dancers[i].constructor === makeSuperMarioDancer) {
         dancers[i].groupDance(100, 1000, 150);
-        console.log('Found 1 mario');
+        break;
+      }
+    }
+    for (i = 0; i < dancers.length; i++) {
+      if (dancers[i].constructor === makeBlinkyDancer) {
+        dancers[i].groupDance(500, 150);
         break;
       }
     }

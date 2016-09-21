@@ -55,9 +55,18 @@ body, a:link, a:visited, a:active{
   background-size: cover;
   width: 130px; /* Width of new image */
   height: 125px; /* Height of new image */ 
+}
+
+.rotation-continuous{
   animation-name: spinning;
   animation-duration: 3s;
   animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.rotation{
+  animation-name: spinning;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 @keyframes spinning {
