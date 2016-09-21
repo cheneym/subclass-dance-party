@@ -13,6 +13,7 @@ var makeDancer = function(top, left, timeBetweenSteps) {
 
   //Booleans
   this.dance = true;
+  this.canMouseOver = true;
 
   //Start dancing
   if (this.constructor === makeDancer) {
@@ -49,6 +50,7 @@ makeDancer.prototype.stopDancing = function() {
 
 makeDancer.prototype.startDancing = function() {
   this.dance = true;
+  this.canMouseOver = true;
   var x = parseFloat(this.$node.css('left'));
   var y = parseFloat(this.$node.css('top'));
   this.setPosition(y, x);
@@ -63,6 +65,7 @@ makeDancer.prototype.continueDancing = function() {
 makeDancer.prototype.lineUp = function(top, left, time) {
   time = time || 1;
   this.stopDancing();
+  this.canMouseOver = false;
   var cssPosition = {
     top: '' + top,
     left: '' + left

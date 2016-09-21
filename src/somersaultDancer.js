@@ -9,7 +9,7 @@ var makeSomersaultDancer = function(top, left, timeBetweenSteps) {
   this.setRadius(Math.random() * 100 + 50);
 
   if (this.constructor === makeSomersaultDancer) {
-    this.step(); 
+    this.step();
   }
 };
 
