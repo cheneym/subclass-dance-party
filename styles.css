@@ -73,15 +73,18 @@ body, a:link, a:visited, a:active{
   0% {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 } 
-/*
-@keyframes glow {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}*/
+
+.move{
+  position: absolute;
+  animation-name: move;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+ 
+@keyframes move {
+    0% {top: 500px; left: 500px;}
+    25% {top: 400px; left: 250px;}
+    50% {top: 300px; left: 500px;}
+    75% {top: 200px; left: 250px;}
+    100% {top: 100px; left: 500px;}
+}

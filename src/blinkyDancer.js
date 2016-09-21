@@ -54,7 +54,6 @@ makeBlinkyDancer.prototype.groupDance = function(timeDelay, maxDistance) {
 
   if (setCount === 0) {
     stars.forEach(function(star) {
-      console.log('resetting');
       star.spun = false;
     });
   }

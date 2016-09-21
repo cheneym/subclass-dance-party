@@ -116,6 +116,11 @@ $(document).ready(function() {
         break;
       }
     }
+    for (i = 0; i < dancers.length; i++) {
+      if (dancers[i].constructor === makeSomersaultDancer) {
+        dancers[i].groupDance();
+      }
+    }
   });
 
 });

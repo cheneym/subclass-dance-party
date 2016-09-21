@@ -6,6 +6,7 @@ var makeSomersaultDancer = function(top, left, timeBetweenSteps) {
 
   //Circle Properties
   this.t = 0;
+  this.groupDancing = false;
   this.setRadius(Math.random() * 100 + 50);
 
   if (this.constructor === makeSomersaultDancer) {
@@ -51,10 +52,46 @@ makeSomersaultDancer.prototype.continueDancing = function() {
 
 makeSomersaultDancer.prototype.resetProperties = function() {
   this.t = 0;
+  this.groupDancing = false;
 };
 
 makeSomersaultDancer.prototype.fadeOut = function(time) {
   time = time || 2000;
-  console.log('this is runned');
   this.$node.fadeOut(time);
+};
+
+makeSomersaultDancer.prototype.groupDance = function() {
+  //this.$node.addClass('move')
+  if (!this.groupDancing) {
+    this.t = Math.PI * 0.7322795;
+  }
+  this.groupDancing = true;
+  this.limaconDance(100);
+};
+
+makeSomersaultDancer.prototype.limaconDance = function(time) {
+  if (!this.groupDancing) {
+    return;
+  }
+
+  var xCenter = this.left;
+  var yCenter = this.top;
+  this.t += 0.1;
+  var r = 200 + 300 * Math.cos(this.t);
+  var newLeft = Math.floor(xCenter - (r * Math.sin(this.t)));
+  var newTop = Math.floor(yCenter - (r * Math.cos(this.t)));
+
+  //Time interval
+  var timeInterval = time;
+
+  this.$node.animate({top: newTop, left: newLeft}, 
+                      timeInterval, 
+                      this.limaconDance.bind(this, timeInterval));
+
+};
+
+makeSomersaultDancer.prototype.lineUp = function(top, left, time) {
+  makeDancer.prototype.lineUp.call(this, top, left, time);
+  this.groupDancing = false;
+
 };

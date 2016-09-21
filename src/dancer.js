@@ -85,7 +85,3 @@ makeDancer.prototype.isDancing = function() {
   return this.dance;
 };
 
-
-
-
-
