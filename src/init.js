@@ -123,5 +123,11 @@ $(document).ready(function() {
     }
   });
 
+  $('.randomize').on('click', function(event) {
+    window.dancers.forEach(function(dancer) {
+      dancer.randomize();
+    });
+  });
+
 });
 

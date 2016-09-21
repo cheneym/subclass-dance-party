@@ -85,3 +85,16 @@ makeDancer.prototype.isDancing = function() {
   return this.dance;
 };
 
+makeDancer.prototype.randomize = function() {
+  var top = $('body').height() * 1 / 6 + ($('body').height() * 4 / 6) * Math.random();
+  var left = $('body').width() * 1 / 6 + ($('body').width() * 4 / 6) * Math.random();
+  var time = Math.random() * 1500 + 500;
+  this.lineUp(top, left, time);
+  this.timeBetweenSteps = time;
+  setTimeout(this.startDancing.bind(this), time + 500);
+};
+
+
+
+
+
