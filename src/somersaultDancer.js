@@ -52,3 +52,9 @@ makeSomersaultDancer.prototype.continueDancing = function() {
 makeSomersaultDancer.prototype.resetProperties = function() {
   this.t = 0;
 };
+
+makeSomersaultDancer.prototype.fadeOut = function(time) {
+  time = time || 2000;
+  console.log('this is runned');
+  this.$node.fadeOut(time);
+};

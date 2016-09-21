@@ -82,6 +82,19 @@ $(document).ready(function() {
     });
   });
 
+  $('body').on('click', '.somersault', function(event) {
+    var time = 2500;
+    var node = this;
+    for (var i = 0; i < dancers.length; i++) {
+      if (dancers[i].$node.get(0) === node) {
+        dancers[i].fadeOut(time);
+        dancers.splice(i, 1);
+        break;
+      }
+    }
+    setTimeout(this.remove.bind(this), time);
+  });
+
   $('body').on('mouseleave', '.somersault', function(event) {
     var node = this;
     window.dancers.forEach(function(dancer) {

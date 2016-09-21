@@ -2,7 +2,7 @@ body, html{
   height:100%;
 }
 body{
-  background: url("Images/background1.jpeg");
+  background: url("Images/background2.jpeg");
   background-size: cover;
   margin: 0px;
   font-size: 18px;
@@ -35,10 +35,10 @@ body, a:link, a:visited, a:active{
 }
 .somersault{
   border: none;
-  background: url("Images/Charlie-kick1.gif");
+  background: url("Images/ghost.png");
   background-size: cover;
-  width: 100px; /* Width of new image */
-  height: 125px; /* Height of new image */
+  width: 150px; /* Width of new image */
+  height: 150px; /* Height of new image */
 }
 
 .fighter{ 
@@ -48,3 +48,31 @@ body, a:link, a:visited, a:active{
   width: 220px; /* Width of new image */
   height: 125px; /* Height of new image */  
 }
+
+.blinky{
+  border: none;
+  background: url("Images/blinkyStart.png");
+  background-size: cover;
+  width: 130px; /* Width of new image */
+  height: 125px; /* Height of new image */ 
+  animation-name: spinning;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes spinning {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+} 
+/*
+@keyframes glow {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}*/
